@@ -36,8 +36,10 @@ def run_webcam(model):
 
             start_time = time.perf_counter()
 
-            results = model(
+            results = model.track(
                 frame,
+                persist=True,
+                tracker="bytetrack.yaml",
                 conf=confidence_threshold,
                 classes=selected_classes,
                 verbose=False,
@@ -49,6 +51,44 @@ def run_webcam(model):
 
             result = results[0]
             annotated_frame = result.plot()
+            # Display tracking IDs with a readable background
+            if result.boxes is not None and result.boxes.id is not None:
+                track_ids = result.boxes.id.int().cpu().tolist()
+                boxes = result.boxes.xyxy.cpu().tolist()
+                class_ids = result.boxes.cls.int().cpu().tolist()
+
+                for track_id, box, class_id in zip(track_ids, boxes, class_ids):
+                    x1, y1, x2, y2 = map(int, box)
+                    class_name = result.names[class_id]
+                    label = f"ID: {track_id} | {class_name}"
+
+                    text_size, baseline = cv2.getTextSize(
+                        label,
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        0.55,
+                        2,
+                    )
+
+                    text_width, text_height = text_size
+                    label_y = max(y1 - 8, text_height + 10)
+
+                    cv2.rectangle(
+                        annotated_frame,
+                        (x1, label_y - text_height - 6),
+                        (x1 + text_width + 8, label_y + baseline - 2),
+                        (0, 0, 0),
+                        -1,
+                    )
+
+                    cv2.putText(
+                        annotated_frame,
+                        label,
+                        (x1 + 4, label_y),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        0.55,
+                        (0, 255, 255),
+                        2,
+                    )
 
             # Count detected objects
             class_counts = Counter()

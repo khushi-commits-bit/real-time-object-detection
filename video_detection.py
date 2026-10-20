@@ -102,7 +102,12 @@ def run_video_detection(model):
             if not success:
                 break
 
-            results = model(frame, verbose=False)
+            results = model.track(
+                frame,
+                persist=True,
+                tracker="bytetrack.yaml",
+                verbose=False,
+            )
             result = results[0]
             annotated_frame = result.plot()
 
