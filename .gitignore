@@ -1,0 +1,19 @@
+
+# Python virtual environment
+.venv/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# YOLO model weights
+*.pt
+
+# Generated detection outputs
+runs/
+
+# Environment variables and secrets
+.env
+
+# VS Code workspace settings
+.vscode/
