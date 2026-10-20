@@ -4,13 +4,15 @@ A Python-based computer vision project that detects and classifies objects in re
 
 ## Features
 
-- **Real-time webcam detection:** Detect objects live using your computer's webcam.
-- **Image detection:** Select an image, detect objects, and save the annotated result.
-- **Video detection:** Process a video, visualize detections, and export the annotated video.
-- **Performance monitoring:** Display FPS, inference time, and detected object counts in webcam mode.
-- **Confidence adjustment:** Increase or decrease the detection confidence threshold.
-- **Class filtering:** Detect all supported objects, people only, or vehicles only.
-- **Unified menu:** Access all three detection modes from one application.
+- Real-time webcam detection: Detect objects live using your computer's webcam.
+- Image detection: Select an image, detect objects, and save the annotated result.
+- Video detection: Process videos and export annotated output.
+- Object tracking: Use the ByteTrack algorithm to associate detected objects across consecutive webcam and video frames.
+- Tracking IDs: Display tracking IDs alongside object class labels.
+- Performance monitoring: Display FPS, inference time, and detected object counts in webcam mode.
+- Confidence adjustment: Increase or decrease the detection confidence threshold during webcam detection.
+- Class filtering: Detect all supported objects, people only, or vehicles only.
+- Unified menu: Access all three detection modes from one application.
 
 ## Demo
 ![Real-time object detection](screenshots/web_cam_detection.png)
@@ -127,10 +129,11 @@ Detection performance depends on hardware, input resolution, lighting, and the n
 
 This project provides practical experience with:
 
-- Integrating a pretrained object detection model.
+- Integrating a pretrained YOLO object detection model.
 - Processing live webcam frames with OpenCV.
 - Applying computer vision to images and video streams.
-- Displaying bounding boxes, class labels, and confidence scores.
+- Using ByteTrack for multi-frame object tracking.
+- Visualizing bounding boxes, class labels, and tracking IDs.
 - Measuring inference time and estimating frame rate.
 - Organizing a Python project into reusable modules.
 - Managing dependencies and version control with Git and GitHub.
@@ -145,4 +148,4 @@ This project provides practical experience with:
 
 ---
 
-**Note:** This project uses a pretrained model. Detection accuracy and performance may vary depending on the input and computing hardware.
+Note: This project uses a pretrained model. Detection accuracy and performance may vary depending on the input and computing hardware.
