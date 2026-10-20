@@ -111,6 +111,18 @@ The application uses the lightweight `yolo26n.pt` model through the Ultralytics 
 
 Detection performance depends on hardware, input resolution, lighting, and the number of objects in a scene.
 
+## Initial Performance Benchmark
+
+| Metric                  | Initial Result           |
+| Detection model         | YOLO26n                  |
+| Webcam FPS              | 15.1                     |
+| Reported inference time | 55.1 ms                  |
+| Test duration           | Approximately 30 seconds |
+
+**Environment:** Windows desktop;
+
+**Note:** These are preliminary measurements from a webcam session, not a controlled benchmark. Results may vary with hardware, input conditions, and background processing.
+
 ## Learning Outcomes
 
 This project provides practical experience with:
