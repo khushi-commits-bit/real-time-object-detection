@@ -12,6 +12,9 @@ A Python-based computer vision project that detects and classifies objects in re
 - **Class filtering:** Detect all supported objects, people only, or vehicles only.
 - **Unified menu:** Access all three detection modes from one application.
 
+## Demo
+![Real-time object detection](screenshots/web_cam_detection.png)
+
 ## Technologies Used
 
 - Python
